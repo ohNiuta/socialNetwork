@@ -17,13 +17,13 @@ public class User {
 	@Id
 	@GenericGenerator(name="inc", strategy="increment")
 	@GeneratedValue(generator="inc")
-	@Column
+	@Column(name="id")
 	private Integer id;
 	
-	@Column
+	@Column(name="name")
 	private String userName;
 	
-	@Column
+	@Column(name="password")
 	private String password;
 
 	
