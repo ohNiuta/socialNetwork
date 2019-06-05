@@ -5,19 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Log in here</title>
+<title>Register here</title>
 </head>
 <body>
-	<h1>Log In</h1>
-	<s:form action="login">
+	<h1>Register</h1>
+	<s:form action="register">
 		<s:textfield key="user.userName" label="User Name" />
 		<s:textfield key="user.password" label="Passowrd" />
 		<s:submit />
 		
 	</s:form>
-	<form action="/SocialNetwork/register.jsp">
-		<input type="submit" value="Register">
-	</form>
 
 </body>
 </html>
