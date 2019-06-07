@@ -46,7 +46,7 @@ public class LoginAction extends ActionSupport{
 		
 		this.user = users.get(0);
 		
-		//put user into session
+		//put user into session to pass into AddFriendAction's users session
 		userSession.put("user", this.user);
 		dao.close();
 		

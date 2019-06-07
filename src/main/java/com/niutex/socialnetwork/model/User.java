@@ -1,9 +1,12 @@
 package com.niutex.socialnetwork.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -26,7 +29,8 @@ public class User {
 	@Column(name="password")
 	private String password;
 
-	
+	@OneToMany
+	private Set friends;
 
 	public Integer getId() {
 		return id;
@@ -50,6 +54,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Set getFriends() {
+		return friends;
+	}
+
+	public void setFriends(Set friends) {
+		this.friends = friends;
 	}
 	
 	
