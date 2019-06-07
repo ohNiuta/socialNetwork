@@ -14,7 +14,7 @@
 			</property>
 			
 			<property name="hibernate.connection.url">
-			jdbc:mysql://localhost/SocialNetwork
+			jdbc:mysql://localhost/SocialNetwork?serverTimezone=UTC
 			</property>
 			
 			<property name="hibernate.connection.username">

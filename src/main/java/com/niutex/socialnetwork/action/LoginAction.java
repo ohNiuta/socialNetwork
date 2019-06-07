@@ -1,6 +1,7 @@
 package com.niutex.socialnetwork.action;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,7 +12,16 @@ import com.opensymphony.xwork2.ActionSupport;
 public class LoginAction extends ActionSupport{
 	
 	private User user;
+	private Map<String, Object> userSession;
 	
+	public Map<String, Object> getUserSession() {
+		return userSession;
+	}
+
+	public void setUserSession(Map<String, Object> userSession) {
+		this.userSession = userSession;
+	}
+
 	@Override
 	public void validate() {
 		
@@ -19,7 +29,7 @@ public class LoginAction extends ActionSupport{
 			addFieldError("user.userName", "User Name Cannot Be Blank");
 			return;
 		}
-		
+
 		UserDAO dao = new UserDAO();
 		List<User> users = dao.findUserByName(user.getUserName());
 		
@@ -35,17 +45,21 @@ public class LoginAction extends ActionSupport{
 		}
 		
 		this.user = users.get(0);
+		
+		//put user into session
+		userSession.put("user", this.user);
 		dao.close();
 		
 	}
 	
+	@Override
 	public String execute() {
 		System.out.println(user.getUserName());
 		System.out.println(user.getPassword());
-	
+		
 		return SUCCESS;
 	}
-
+ 
 	public User getUser() {
 		return user;
 	}

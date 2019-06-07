@@ -11,7 +11,7 @@
 	<h1>Register</h1>
 	<s:form action="register">
 		<s:textfield key="user.userName" label="User Name" />
-		<s:textfield key="user.password" label="Passowrd" />
+		<s:password key="user.password" label="Password" />
 		<s:submit />
 		
 	</s:form>

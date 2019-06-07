@@ -30,6 +30,11 @@ public class RegisterAction extends ActionSupport {
 			return;
 		}
 		
+		if(user.getPassword().length() > 64) {
+			addFieldError("user.password", "Incorrect Password");
+			return;
+		}
+		
 		
 		dao.close();
 	}
@@ -38,8 +43,14 @@ public class RegisterAction extends ActionSupport {
 	public String execute() {
 		UserDAO dao = new UserDAO();
 		dao.insertUser(user);
+		dao.close();
 		return SUCCESS;
 	}
+	
+	/**
+	 * 
+	 * @return the user
+	 */
 	
 	public User getUser() {
 		return user;
