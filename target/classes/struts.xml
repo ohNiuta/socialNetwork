@@ -15,7 +15,7 @@
   </package>
   
   <package name="FriendSystem" extends="struts-default">
-  	<action name="addFriend">
+  	<action name="addFriend" class="com.niutex.socialnetwork.action.AddFriendAction">
   		<result name="success">/loginSuccess.jsp</result>
   		<result name="input">/loginSuccess.jsp</result>
   	</action>

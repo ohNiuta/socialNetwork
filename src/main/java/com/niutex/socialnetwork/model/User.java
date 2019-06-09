@@ -4,14 +4,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-
-
 
 @Entity
 @Table(name="Users")
@@ -29,8 +28,8 @@ public class User {
 	@Column(name="password")
 	private String password;
 
-	@OneToMany
-	private Set friends;
+	@OneToMany(fetch=FetchType.EAGER)
+	private Set<User> friends;
 
 	public Integer getId() {
 		return id;
@@ -56,11 +55,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Set getFriends() {
+	public Set<User> getFriends() {
 		return friends;
 	}
 
-	public void setFriends(Set friends) {
+	public void setFriends(Set<User> friends) {
 		this.friends = friends;
 	}
 	

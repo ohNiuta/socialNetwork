@@ -13,5 +13,12 @@
 		<s:textfield key="name" label="User Name"/>
 		<s:submit/>
 	</s:form>
+	
+	<h2>Friends list</h2>
+	<s:iterator value="#session.user.friends" var="user"/>
+		<li>
+			<s:property value="#user.userName"/>
+		</li>
+	
 </body>
 </html>

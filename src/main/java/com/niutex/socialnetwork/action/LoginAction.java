@@ -4,23 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.niutex.socialnetwork.dao.UserDAO;
 import com.niutex.socialnetwork.model.User;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport{
+public class LoginAction extends ActionSupport implements SessionAware {
 	
 	private User user;
 	private Map<String, Object> userSession;
-	
-	public Map<String, Object> getUserSession() {
-		return userSession;
-	}
-
-	public void setUserSession(Map<String, Object> userSession) {
-		this.userSession = userSession;
-	}
 
 	@Override
 	public void validate() {
@@ -66,6 +59,19 @@ public class LoginAction extends ActionSupport{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public Map<String, Object> getUserSession() {
+		return userSession;
+	}
+
+	public void setUserSession(Map<String, Object> userSession) {
+		this.userSession = userSession;
+	}
+
+	@Override
+	public void setSession(Map<String, Object> session) {
+		this.userSession = session;		
 	}
 	
 	

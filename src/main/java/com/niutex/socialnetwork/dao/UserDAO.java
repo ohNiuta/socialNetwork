@@ -24,11 +24,17 @@ public class UserDAO {
 	}
 	
 	public List<User> findUserByName(String name) {
-		List<User> users = session.
-				createQuery("from User where name = :name").
-				setParameter("name", name).
-				list();
+		//in hibernate use name of the class in sql query statement
+		//instead of table name
+		List users = session.createQuery("from User where name = :name")
+				.setParameter("name", name).list();
 		return users;
+	}
+	
+	public void update(User user) {
+		session.beginTransaction();
+		session.update(user);
+		session.getTransaction().commit();
 	}
 	
 	public void close() {
